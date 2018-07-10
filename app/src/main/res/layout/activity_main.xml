@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" 
+    android:layout_height="match_parent"
     tools:context=".MainActivity" >
 
     <EditText
@@ -35,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Button"
+        android:text="Login"
         tools:layout_editor_absoluteX="147dp"
         tools:layout_editor_absoluteY="188dp" />
 
