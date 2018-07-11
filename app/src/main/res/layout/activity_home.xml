@@ -6,7 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity" >
 
-
+    <ImageView
+        android:id="@+id/picView"
+        android:layout_width="123dp"
+        android:layout_height="93dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorAccent" />
 
     <EditText
         android:id="@+id/etDescription"
@@ -32,6 +38,14 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:text="Refresh" />
+
+    <Button
+        android:id="@+id/btnPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="Button" />
 
 
 </RelativeLayout>
