@@ -29,7 +29,6 @@ import java.util.List;
 public class HomeActivity extends AppCompatActivity {
 
 
-    private static final String imagePath = null;
     private EditText descriptionInput;
     private Button createButton;
     private Button refreshButton;
@@ -47,11 +46,10 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         descriptionInput = findViewById(R.id.etDescription);
-       createButton = findViewById(R.id.btnCreate);
-       refreshButton = findViewById(R.id.btnRefresh);
-       ImageView picView = findViewById(R.id.picView);
-       postButton = findViewById(R.id.btnPost);
-
+        createButton = findViewById(R.id.btnCreate);
+        refreshButton = findViewById(R.id.btnRefresh);
+        ImageView picView = findViewById(R.id.picView);
+        postButton = findViewById(R.id.btnPost);
 
 
         refreshButton.setOnClickListener(new View.OnClickListener(){
@@ -139,7 +137,7 @@ public class HomeActivity extends AppCompatActivity {
         // wrap File object into a content provider
         // required for API >= 24
         // See https://guides.codepath.com/android/Sharing-Content-with-Intents#sharing-files-with-api-24-or-higher
-        Uri fileProvider = FileProvider.getUriForFile(HomeActivity.this, "com.codepath.fileprovider", photoFile);
+        Uri fileProvider = FileProvider.getUriForFile(HomeActivity.this, "com.example.selzerai.parsetagram", photoFile);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
 
         // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
