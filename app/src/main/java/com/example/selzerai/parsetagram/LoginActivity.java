@@ -17,15 +17,17 @@ public class LoginActivity extends AppCompatActivity {
     private EditText usernameInput;
     private EditText passwordInput;
     private Button login;
+    private Button signup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        usernameInput = findViewById( R.id.etUsername);
+        usernameInput = findViewById( R.id.etName);
         passwordInput = findViewById(R.id.etPassword);
         login = findViewById(R.id.login);
+        signup = findViewById(R.id.signup);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +39,15 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (LoginActivity.this, SignupActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 

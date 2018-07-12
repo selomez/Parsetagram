@@ -30,7 +30,7 @@
 
 
     <EditText
-        android:id="@+id/etUsername"
+        android:id="@+id/etName"
         android:layout_width="346dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -65,19 +65,19 @@
         android:layout_width="161dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/signin"
+        android:layout_alignTop="@+id/signup"
         android:layout_marginEnd="13dp"
         android:text="Log In"
         android:textStyle="bold" />
 
 
     <Button
-        android:id="@+id/signin"
+        android:id="@+id/signup"
         style="?android:textAppearanceSmall"
         android:layout_width="161dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/etUsername"
+        android:layout_alignStart="@+id/etName"
         android:layout_marginBottom="97dp"
         android:text="Sign Up"
         android:textStyle="bold" />
