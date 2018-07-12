@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/ivPicture"
+        android:layout_width="224dp"
+        android:layout_height="246dp"
+        app:srcCompat="@drawable/icon"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="22dp" />
+
+    <TextView
+        android:id="@+id/tvHandle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="3dp" />
+
+    <ImageView
+        android:id="@+id/ivUnHeart"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:srcCompat="@drawable/plainheart"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="280dp" />
+
+    <ImageView
+        android:id="@+id/ivComment"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:srcCompat="@drawable/comment"
+        tools:layout_editor_absoluteX="65dp"
+        tools:layout_editor_absoluteY="280dp" />
+
+    <ImageView
+        android:id="@+id/ivDirect"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:srcCompat="@drawable/direct"
+        tools:layout_editor_absoluteX="140dp"
+        tools:layout_editor_absoluteY="280dp" />
+</android.support.constraint.ConstraintLayout>

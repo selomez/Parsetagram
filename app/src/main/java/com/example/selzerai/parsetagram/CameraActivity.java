@@ -26,7 +26,7 @@ import com.parse.SaveCallback;
 import java.io.File;
 import java.util.List;
 
-public class HomeActivity extends AppCompatActivity {
+public class CameraActivity extends AppCompatActivity {
 
 
     private EditText descriptionInput;
@@ -44,7 +44,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_camera);
         descriptionInput = findViewById(R.id.etDescription);
         createButton = findViewById(R.id.btnCreate);
         refreshButton = findViewById(R.id.btnRefresh);
@@ -55,7 +55,7 @@ public class HomeActivity extends AppCompatActivity {
         refreshButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick (View v) {
-                loadTopPosts();
+                new TimelineActivity();
             }
         });
 
@@ -81,14 +81,11 @@ public class HomeActivity extends AppCompatActivity {
                     }
                 });
 
-
             }
         });
 
         loadTopPosts();
     }
-
-
 
     private void createPost(String description, ParseFile imageFile, ParseUser user){
         final Post newPost = new Post();
@@ -107,6 +104,9 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        Intent intent = new Intent (this, TimelineActivity.class);
+        startActivity(intent);
+
     }
     private void loadTopPosts(){
         final Post.Query postQuery = new Post.Query();
@@ -117,7 +117,7 @@ public class HomeActivity extends AppCompatActivity {
             public void done(List<Post> objects, ParseException e) {
                 if (e==null){
                     for (int i =0; i <objects.size(); i++){
-                        Log.d("LoginActivity", "Post[" + i + "] = "
+                        Log.d("CameraActivity", "Post[" + i + "] = "
                                 + objects.get(i).getDescription()
                                 + "\nusername = " +objects.get(i).getUser().getUsername());
                     }
@@ -137,7 +137,7 @@ public class HomeActivity extends AppCompatActivity {
         // wrap File object into a content provider
         // required for API >= 24
         // See https://guides.codepath.com/android/Sharing-Content-with-Intents#sharing-files-with-api-24-or-higher
-        Uri fileProvider = FileProvider.getUriForFile(HomeActivity.this, "com.example.selzerai.parsetagram", photoFile);
+        Uri fileProvider = FileProvider.getUriForFile(CameraActivity.this, "com.example.selzerai.parsetagram", photoFile);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
 
         // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
@@ -163,11 +163,11 @@ public class HomeActivity extends AppCompatActivity {
         // Return the file target for the photo based on filename
         File file = new File(mediaStorageDir.getPath() + File.separator + fileName);
 
-
         return file;
     }
 
     @Override
+
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
