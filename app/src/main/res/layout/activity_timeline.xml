@@ -1,17 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/swipeContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="453dp">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvPost"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_width="wrap_content"
+            android:layout_height="450dp" />
 
     </android.support.v4.widget.SwipeRefreshLayout>
+
+    <ImageView
+        android:id="@+id/ivHome"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="156dp"
+        android:background="@android:color/background_light"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/create" />
+
+    <ImageView
+        android:id="@+id/ivCreate"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:background="@android:color/background_light"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/feed" />
+
+    <ImageView
+        android:id="@+id/ivProfile"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:adjustViewBounds="false"
+        android:background="@android:color/background_light"
+        android:cropToPadding="false"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/profile" />
 </RelativeLayout>

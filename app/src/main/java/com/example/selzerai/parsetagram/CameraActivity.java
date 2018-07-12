@@ -28,7 +28,7 @@ public class CameraActivity extends AppCompatActivity {
 
 
     private EditText descriptionInput;
-    private Button createButton;
+    private ImageView createButton;
     private Button refreshButton;
     private Button postButton;
 
