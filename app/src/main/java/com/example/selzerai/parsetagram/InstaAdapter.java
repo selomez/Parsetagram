@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.selzerai.parsetagram.model.Post;
 
 import java.util.ArrayList;
@@ -21,15 +22,22 @@ public class InstaAdapter extends RecyclerView.Adapter <InstaAdapter.ViewHolder>
     static Context context;
     public InstaAdapter (List<Post>posts){ mPosts = posts; }
 
+    public void clear() {
+        mPosts.clear();
+        notifyDataSetChanged();
+    }
+
+    public void addAll(ArrayList<Post> posts) {
+        mPosts.addAll(posts);
+        notifyDataSetChanged();
+    }
 
     @Override
-    public ViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
+    public InstaAdapter.ViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
         context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
-        //TODO
         View postView = inflater.inflate(R.layout.item_post, parent, false);
-
         ViewHolder viewHolder = new ViewHolder(postView);
         return viewHolder;
     }
@@ -39,70 +47,48 @@ public class InstaAdapter extends RecyclerView.Adapter <InstaAdapter.ViewHolder>
 
         Post post = mPosts.get(position);
 
-        try {
-            holder.tvHandle.setText(post.getUser().fetchIfNeeded().getUsername());
-        } catch (com.parse.ParseException e) {
-            e.printStackTrace();
-        }
-        holder.tvDescription.setText(post.getDescription());
-
-        try {
-            final String username = post.getUser().fetchIfNeeded().getUsername();
-        } catch (com.parse.ParseException e) {
-            e.printStackTrace();
-        }
-
-        //Glide.with(context)
-        //  .load(post.profileImageUrl);
-        //  .into(holder.ivProfileImage);
+        holder.tvHandle.setText(post.getUser().getUsername());
+    //    holder.tvDescription.setText(post.getDescription());
+        Glide.with(context).load(post.getImage().getUrl()).into(holder.ivImage);
 
     }
 
-    public void clear() {
-        mPosts.clear();
-        notifyDataSetChanged();
-    }
+
 
     @Override
     public int getItemCount() {
         return mPosts.size();
     }
 
-    public void addAll(ArrayList<Post> posts) {
-        mPosts.addAll(posts);
-        notifyDataSetChanged();
-    }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+    public class ViewHolder extends RecyclerView.ViewHolder { //implements View.OnClickListener {
 
         public ImageView ivImage;
         public TextView tvHandle;
-        public TextView tvDescription;
+     //   public TextView tvDescription;
 
-        public ViewHolder (View itemView){
+        public ViewHolder (View itemView) {
             super(itemView);
 
-            ivImage = (ImageView )itemView.findViewById(R.id.picView);
-            tvDescription = (TextView ) itemView.findViewById(R.id.etDescription);
-            tvHandle = (TextView) itemView.findViewById(R.id.tvHandle);
-            itemView.setOnClickListener(this);
+            ivImage = itemView.findViewById(R.id.ivPicture);
+         //   tvDescription = itemView.findViewById(R.id.etDescription);
+            tvHandle = itemView.findViewById(R.id.tvHandle);
+       //     itemView.setOnClickListener(this);
 
         }
-
-
-        @Override
-        public void onClick (View view){
-            int position = getAdapterPosition();
-
-            if (position != RecyclerView.NO_POSITION){
-                Post post = mPosts.get(position);
-                //TODO: CREATE AND SEND TO DETAILS ACTIVITY
-                //  Intent intent = new Intent (context, DetailsActivity.class);
-                //    intent.putExtra(Post.class.getSimpleName(), Parcels.wrap(tweet));
-                //context.startActivity(intent);
-           }
-        }
-
+//        @Override
+//        public void onClick (View view){
+//            int position = getAdapterPosition();
+//
+//            if (position != RecyclerView.NO_POSITION){
+//                Post post = mPosts.get(position);
+//                //TODO: CREATE AND SEND TO DETAILS ACTIVITY
+//                //  Intent intent = new Intent (context, DetailsActivity.class);
+//                //    intent.putExtra(Post.class.getSimpleName(), Parcels.wrap(tweet));
+//                //context.startActivity(intent);
+//           }
+//        }
     }
 
 //    // getRelativeTimeAgo("Mon Apr 01 21:16:23 +0000 2014");

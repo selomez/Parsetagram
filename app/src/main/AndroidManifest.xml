@@ -36,6 +36,9 @@
         <activity
             android:name=".CameraActivity"
             android:label="@string/title_activity_camera" />
+        <activity
+            android:name=".TimelineActivity"
+            android:label="@string/title_activity_camera" />
 
     </application>
 

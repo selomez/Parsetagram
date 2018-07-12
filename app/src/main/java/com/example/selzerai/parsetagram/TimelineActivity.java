@@ -5,7 +5,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import com.example.selzerai.parsetagram.model.Post;
 import com.parse.FindCallback;
@@ -36,8 +35,7 @@ public class TimelineActivity extends AppCompatActivity {
         rvPosts.setLayoutManager(linearLayoutManager);
         rvPosts.setAdapter(adapter);
 
-
-            loadTopPosts();
+        loadTopPosts();
     }
 
     private void loadTopPosts() {
@@ -57,29 +55,6 @@ public class TimelineActivity extends AppCompatActivity {
         });
         adapter.addAll(posts);
     }
-        private void fetchTimelineAsync(){
-            adapter.clear();
-            final Post.Query postQuery = new Post.Query();
-            postQuery.getTop().withUser();
-
-            postQuery.findInBackground(new FindCallback<Post>() {
-                @Override
-                public void done(List<Post> objects, ParseException e) {
-                    if (e==null){
-                        for (int i =0; i <objects.size(); i++){
-                            Log.d("LoginActivity", "Post[" + i + "] = "
-                                    + objects.get(i).getDescription()
-                                    + "\nusername = " +objects.get(i).getUser().getUsername());
-                        }
-                    } else{
-                        e.printStackTrace();
-                    }
-                }
-            });
-            swipeContainer.setRefreshing(false);
-        }
-
-
 
 }
 

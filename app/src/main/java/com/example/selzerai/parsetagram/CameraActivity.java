@@ -17,14 +17,12 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.selzerai.parsetagram.model.Post;
-import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.io.File;
-import java.util.List;
 
 public class CameraActivity extends AppCompatActivity {
 
@@ -80,11 +78,9 @@ public class CameraActivity extends AppCompatActivity {
                         createPost(description,parseFile, user);
                     }
                 });
-
             }
         });
 
-        loadTopPosts();
     }
 
     private void createPost(String description, ParseFile imageFile, ParseUser user){
@@ -98,34 +94,16 @@ public class CameraActivity extends AppCompatActivity {
             public void done(ParseException e) {
                if (e == null){
                    Log.d("HomeActivity", "Create Post Success");
+                   Intent intent = new Intent (CameraActivity.this, TimelineActivity.class);
+                   startActivity(intent);
                }else{
                    e.printStackTrace();
                }
             }
         });
 
-        Intent intent = new Intent (this, TimelineActivity.class);
-        startActivity(intent);
 
-    }
-    private void loadTopPosts(){
-        final Post.Query postQuery = new Post.Query();
-        postQuery.getTop().withUser();
 
-        postQuery.findInBackground(new FindCallback<Post>() {
-            @Override
-            public void done(List<Post> objects, ParseException e) {
-                if (e==null){
-                    for (int i =0; i <objects.size(); i++){
-                        Log.d("CameraActivity", "Post[" + i + "] = "
-                                + objects.get(i).getDescription()
-                                + "\nusername = " +objects.get(i).getUser().getUsername());
-                    }
-                } else{
-                    e.printStackTrace();
-                }
-            }
-        });
     }
 
     public void onLaunchCamera() {
