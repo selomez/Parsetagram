@@ -37,7 +37,10 @@
             android:label="@string/title_activity_camera" />
         <activity
             android:name=".TimelineActivity"
-            android:label="@string/title_activity_camera" />
+            android:label=".TimelineActivity" />
+        <activity
+            android:name=".SignupActivity"
+            android:label=".SignupActivity" />
 
     </application>
 

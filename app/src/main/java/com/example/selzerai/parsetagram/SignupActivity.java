@@ -21,6 +21,7 @@ public class SignupActivity extends AppCompatActivity {
     EditText password;
     Button signup;
 
+
     @Override
     protected void onCreate (Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -31,17 +32,18 @@ public class SignupActivity extends AppCompatActivity {
         password = findViewById(R.id.etPassword);
         signup = findViewById(R.id.btnSignUp);
 
+
+        //setting values to user input
+         final ParseUser user = new ParseUser();
+
+        user.setUsername(String.valueOf(username.getEditableText().toString()));
+        user.setPassword(String.valueOf(password.getEditableText().toString()));
+        user.put("handle",String.valueOf(handle.getEditableText().toString()));
+
+//TODO- "java.lang.IllegalArgumentException: Username cannot be missing or blank LINE 48"
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //setting values to user input
-                ParseUser user = new ParseUser();
-
-                user.setUsername(String.valueOf(username.getText()));
-                user.setPassword(String.valueOf(password.getText()));
-                user.put("handle",String.valueOf(handle.getText()));
-
                 // Invoke signUpInBackground
                 user.signUpInBackground(new SignUpCallback() {
                     public void done(ParseException e) {
@@ -55,7 +57,10 @@ public class SignupActivity extends AppCompatActivity {
                         }
                     }
                 });
+
             }
         });
+
     }
+
 }

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.parse.LogInCallback;
 import com.parse.ParseException;
@@ -29,6 +30,14 @@ public class LoginActivity extends AppCompatActivity {
         login = findViewById(R.id.login);
         signup = findViewById(R.id.signup);
 
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) {
+            Toast.makeText(this, "Welcome Back", Toast.LENGTH_LONG);
+            final Intent intent = new Intent(LoginActivity.this, TimelineActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
+
 
     private void login(String username, String password) {
         ParseUser.logInInBackground(username, password, new LogInCallback() {

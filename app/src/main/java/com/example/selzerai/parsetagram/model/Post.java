@@ -22,7 +22,7 @@ public class Post extends ParseObject {
         put("media", parseFile);
     }
 
-    public String getKeyDescription() {
+    public String getDescription() {
         return getString(KEY_DESCRIPTION);
     }
 

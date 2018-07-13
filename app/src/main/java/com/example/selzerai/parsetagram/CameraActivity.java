@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.selzerai.parsetagram.model.Post;
@@ -21,6 +22,8 @@ import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+
+import org.parceler.Parcels;
 
 import java.io.File;
 
@@ -31,11 +34,13 @@ public class CameraActivity extends AppCompatActivity {
     private ImageView createButton;
     private Button refreshButton;
     private Button postButton;
+    private ProgressBar progessBar;
 
     public final String APP_TAG = "Parsetagram";
     public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1034;
     public String photoFileName = "photo.jpg";
     File photoFile;
+
 
 
 
@@ -101,10 +106,15 @@ public class CameraActivity extends AppCompatActivity {
                }
             }
         });
-
-
+// shows the progress bar
+        Intent intent = new Intent(CameraActivity.this, TimelineActivity.class);
+        intent.putExtra(Post.class.getSimpleName(), Parcels.wrap(newPost));
+        progessBar.setVisibility(ProgressBar.INVISIBLE);
+        startActivity(intent);
 
     }
+
+
 
     public void onLaunchCamera() {
         // create Intent to take a picture and return control to the calling application

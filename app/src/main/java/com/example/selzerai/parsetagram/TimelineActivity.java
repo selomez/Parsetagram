@@ -65,7 +65,7 @@ public class TimelineActivity extends AppCompatActivity {
     }
 
     public void launchProfile(View view) {
-        Intent intent = new Intent(this, LogoutActivity.class);
+        Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
     }
 

@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
 
-    <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/swipeContainer"
-        android:layout_width="match_parent"
-        android:layout_height="453dp">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvPost"
-            android:layout_width="wrap_content"
-            android:layout_height="450dp" />
-
-    </android.support.v4.widget.SwipeRefreshLayout>
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="190dp"
+        android:onClick="logout"
+        android:text="Log out"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="112dp" />
 
     <ImageView
         android:id="@+id/ivHome"
@@ -25,7 +27,7 @@
         android:layout_marginEnd="156dp"
         android:background="@android:color/background_light"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/create" />
+        app:srcCompat="@drawable/feed" />
 
     <ImageView
         android:id="@+id/ivCreate"
@@ -33,10 +35,9 @@
         android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-
         android:onClick="launchCreate"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/feed" />
+        app:srcCompat="@drawable/create" />
 
     <ImageView
         android:id="@+id/ivProfile"
@@ -45,8 +46,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:adjustViewBounds="false"
-        android:onClick="launchProfile"
         android:cropToPadding="false"
         android:scaleType="fitXY"
         app:srcCompat="@drawable/profile" />
-</LinearLayout>
+</RelativeLayout>
