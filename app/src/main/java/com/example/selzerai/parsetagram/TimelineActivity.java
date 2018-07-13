@@ -47,7 +47,7 @@ public class TimelineActivity extends AppCompatActivity {
         postsQuery.findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> objects, ParseException e) {
-                for (int i = 0; i < objects.size(); i++) {
+                for (int i = objects.size() -1 ; i >= 0; i--) {
                     Post post = objects.get(i);
                     posts.add(post);
                     adapter.notifyItemInserted(posts.size() - 1);

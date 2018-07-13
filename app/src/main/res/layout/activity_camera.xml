@@ -8,12 +8,12 @@
 
     <ImageView
         android:id="@+id/picView"
-        android:layout_width="190dp"
-        android:layout_height="239dp"
+        android:layout_width="267dp"
+        android:layout_height="300dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="82dp"
-        android:background="@color/colorAccent" />
+        android:background="#bdb6b6" />
 
     <EditText
         android:id="@+id/etDescription"
@@ -24,24 +24,20 @@
         android:layout_marginBottom="101dp"
         android:hint="Enter a Description" />
 
-
-    <Button
-        android:id="@+id/btnRefresh"
-        android:layout_width="106dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/etDescription"
-        android:layout_marginTop="-101dp"
-        android:text="Refresh" />
-
     <Button
         android:id="@+id/btnPost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/etDescription"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="-101dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:text="Post" />
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/ivHome"
@@ -50,15 +46,9 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:scaleType="fitCenter"
+        android:onClick="launchTimeline"
         app:srcCompat="@drawable/feed" />
-    <ProgressBar
-        android:id="@+id/pbLoading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/picView"
-        android:layout_marginEnd="17dp"
-        android:visibility="invisible" />
+
 
     <ImageView
         android:id="@+id/btnCreate"
@@ -76,6 +66,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:scaleType="fitCenter"
+        android:onClick="launchProfile"
         app:srcCompat="@drawable/profile" />
 
 

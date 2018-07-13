@@ -50,17 +50,8 @@ public class CameraActivity extends AppCompatActivity {
         setContentView(R.layout.activity_camera);
         descriptionInput = findViewById(R.id.etDescription);
         createButton = findViewById(R.id.btnCreate);
-        refreshButton = findViewById(R.id.btnRefresh);
         ImageView picView = findViewById(R.id.picView);
         postButton = findViewById(R.id.btnPost);
-
-
-        refreshButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick (View v) {
-                new TimelineActivity();
-            }
-        });
 
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -169,5 +160,14 @@ public class CameraActivity extends AppCompatActivity {
                 Toast.makeText(this, "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    public void launchProfile(View view) {
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+    }
+    public void launchTimeline(View view) {
+        Intent intent = new Intent(this, TimelineActivity.class);
+        startActivity(intent);
     }
 }

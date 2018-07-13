@@ -12,9 +12,7 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
-import org.parceler.Parcel;
 
-@Parcel
 public class SignupActivity extends AppCompatActivity {
     EditText username;
     EditText handle;
@@ -33,17 +31,21 @@ public class SignupActivity extends AppCompatActivity {
         signup = findViewById(R.id.btnSignUp);
 
 
-        //setting values to user input
-         final ParseUser user = new ParseUser();
 
-        user.setUsername(String.valueOf(username.getEditableText().toString()));
-        user.setPassword(String.valueOf(password.getEditableText().toString()));
-        user.put("handle",String.valueOf(handle.getEditableText().toString()));
 
 //TODO- "java.lang.IllegalArgumentException: Username cannot be missing or blank LINE 48"
         signup.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View v) {
+
+                //setting values to user input
+                final ParseUser user = new ParseUser();
+
+                user.setUsername(String.valueOf(username.getEditableText().toString()));
+                user.setPassword(String.valueOf(password.getEditableText().toString()));
+                user.put("handle",String.valueOf(handle.getEditableText().toString()));
                 // Invoke signUpInBackground
                 user.signUpInBackground(new SignUpCallback() {
                     public void done(ParseException e) {

@@ -1,6 +1,7 @@
 package com.example.selzerai.parsetagram;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,13 +13,15 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.selzerai.parsetagram.model.Post;
 
+import org.parceler.Parcels;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class InstaAdapter extends RecyclerView.Adapter <InstaAdapter.ViewHolder>{
 
 
-    private static List<Post> mPosts;
+    private  List<Post> mPosts;
     static Context context;
 
     public InstaAdapter (List<Post>posts){
@@ -40,10 +43,18 @@ public class InstaAdapter extends RecyclerView.Adapter <InstaAdapter.ViewHolder>
     @NonNull
     @Override
     public void onBindViewHolder( ViewHolder holder, int position) {
-        Post post = mPosts.get(position);
+        final Post post = mPosts.get(position);
 
         holder.tvHandle.setText(post.getUser().getUsername());
     //    holder.tvDescription.setText(post.getDescription());
+        holder.ivImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (context, DetailsActivity.class);
+                intent.putExtra(Post.class.getSimpleName(), Parcels.wrap(post));
+                context.startActivity(intent);
+            }
+        });
         Glide.with(context).load(post.getImage().getUrl()).into(holder.ivImage);
 
     }
@@ -69,7 +80,7 @@ public class InstaAdapter extends RecyclerView.Adapter <InstaAdapter.ViewHolder>
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder { //implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
 
         public ImageView ivImage;
@@ -82,21 +93,16 @@ public class InstaAdapter extends RecyclerView.Adapter <InstaAdapter.ViewHolder>
             ivImage = itemView.findViewById(R.id.ivPicture);
             tvDescription = itemView.findViewById(R.id.etDescription);
             tvHandle = itemView.findViewById(R.id.tvHandle);
-       //     itemView.setOnClickListener(this);
+
+           tvHandle.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   Intent intent = new Intent (context, ProfileActivity.class);
+                   context.startActivity(intent);
+               }
+           });
 
         }
-//        @Override
-//        public void onClick (View view){
-//            int position = getAdapterPosition();
-//
-//            if (position != RecyclerView.NO_POSITION){
-//                Post post = mPosts.get(position);
-//                //TODO: CREATE AND SEND TO DETAILS ACTIVITY
-//                //  Intent intent = new Intent (context, DetailsActivity.class);
-//                //    intent.putExtra(Post.class.getSimpleName(), Parcels.wrap(tweet));
-//                //context.startActivity(intent);
-//           }
-//        }
     }
 
 }

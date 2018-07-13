@@ -60,14 +60,13 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-
     private void login(String username, String password) {
         ParseUser.logInInBackground(username, password, new LogInCallback() {
             @Override
             public void done(ParseUser user, ParseException e) {
                 if (e == null){
                     Log.d("loginActivity", "Login Successful");
-                    final Intent intent = new Intent(LoginActivity.this, CameraActivity.class);
+                    final Intent intent = new Intent(LoginActivity.this, TimelineActivity.class);
                     startActivity(intent);
                     finish();
                 }else{

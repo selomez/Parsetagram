@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity"
     android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:background="@drawable/median">
+    android:orientation="vertical">
 
     <!-- Login progress -->
     <ProgressBar
@@ -16,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:visibility="gone" />
+        android:visibility="gone"/>
 
 
     <ImageView
@@ -47,13 +46,11 @@
     <EditText
         android:id="@+id/etPassword"
         style="@drawable/editstyle"
-        android:layout_width="342dp"
+        android:layout_width="347dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginStart="21dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="222dp"
         android:background="@drawable/textborder"
         android:hint="Password"
         android:inputType="textPassword"
@@ -62,11 +59,12 @@
     <Button
         android:id="@+id/login"
         style="?android:textAppearanceSmall"
-        android:layout_width="161dp"
+        android:layout_width="341dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/signup"
-        android:layout_marginEnd="13dp"
+        android:background="#67bff6"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/etPassword"
+        android:layout_marginBottom="232dp"
         android:text="Log In"
         android:textStyle="bold" />
 
@@ -74,11 +72,12 @@
     <Button
         android:id="@+id/signup"
         style="?android:textAppearanceSmall"
-        android:layout_width="161dp"
+        android:layout_width="341dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/etName"
-        android:layout_marginBottom="97dp"
+        android:background="#77f94d"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="159dp"
         android:text="Sign Up"
         android:textStyle="bold" />
 

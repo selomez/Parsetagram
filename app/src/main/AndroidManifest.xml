@@ -39,8 +39,14 @@
             android:name=".TimelineActivity"
             android:label=".TimelineActivity" />
         <activity
+            android:name=".DetailsActivity"
+            android:label=".DetailsActivity" />
+        <activity
             android:name=".SignupActivity"
             android:label=".SignupActivity" />
+        <activity
+            android:name=".ProfileActivity"
+            android:label="ProfileActivity" />
 
     </application>
 
