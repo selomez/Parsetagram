@@ -43,9 +43,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final String username = usernameInput.getText().toString();
                 final String password = passwordInput.getText().toString();
-                
                 login(username, password);
-
             }
         });
 
@@ -56,8 +54,6 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     }
 
     private void login(String username, String password) {

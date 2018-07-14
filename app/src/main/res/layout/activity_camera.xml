@@ -28,8 +28,8 @@
         android:id="@+id/btnPost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:layout_above="@+id/ivHome"
+        android:layout_centerHorizontal="true"
         android:text="Post" />
     <ProgressBar
         android:id="@+id/pbLoading"
@@ -68,7 +68,6 @@
         android:scaleType="fitCenter"
         android:onClick="launchProfile"
         app:srcCompat="@drawable/profile" />
-
 
 </RelativeLayout>
 

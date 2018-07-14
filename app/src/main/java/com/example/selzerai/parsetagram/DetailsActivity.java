@@ -34,9 +34,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         post = (Post) Parcels.unwrap(getIntent().getParcelableExtra(Post.class.getSimpleName()));
 
-        // populate the views according to this data
-    //    tvUsername.setText(post.getUser().getUsername().toString());
-       tvUsername2.setText("@" + post.getUser().getUsername().toString());
+        tvUsername2.setText("@" + post.getUser().getUsername().toString());
         tvDescription.setText(post.getDescription().toString());
 
         String time = post.getCreatedAt().toString().substring(0, 11);

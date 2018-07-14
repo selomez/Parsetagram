@@ -15,6 +15,7 @@ import com.example.selzerai.parsetagram.model.Post;
 
 import org.parceler.Parcels;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class InstaAdapter extends RecyclerView.Adapter <InstaAdapter.ViewHolder>
 
     private  List<Post> mPosts;
     static Context context;
+    String date;
 
     public InstaAdapter (List<Post>posts){
         mPosts = posts;
@@ -31,7 +33,6 @@ public class InstaAdapter extends RecyclerView.Adapter <InstaAdapter.ViewHolder>
     @NonNull
     @Override
     public InstaAdapter.ViewHolder onCreateViewHolder( @NonNull ViewGroup parent, int viewType) {
-
         context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
@@ -45,9 +46,15 @@ public class InstaAdapter extends RecyclerView.Adapter <InstaAdapter.ViewHolder>
     public void onBindViewHolder( ViewHolder holder, int position) {
         final Post post = mPosts.get(position);
 
+        // gets the date
+        SimpleDateFormat dt = new SimpleDateFormat("EEE MMM dd HH:mm:ss ZZZZZ yyyy");
+        date = dt.format(post.getCreatedAt());
+
+        holder.time.setText(getRelativeDate.getRelativeTimeAgo(date));
         holder.tvHandle.setText(post.getUser().getUsername());
-    //    holder.tvDescription.setText(post.getDescription());
+        holder.tvDescription.setText(post.getDescription());
         holder.ivImage.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent (context, DetailsActivity.class);
@@ -56,17 +63,11 @@ public class InstaAdapter extends RecyclerView.Adapter <InstaAdapter.ViewHolder>
             }
         });
         Glide.with(context).load(post.getImage().getUrl()).into(holder.ivImage);
-
     }
 
     @Override
     public int getItemCount() {
         return mPosts.size();
-    }
-
-    public Post getItem(int position) {
-        if (getItemCount() == 0) return null;
-        return mPosts.get(position);
     }
 
     public void clear() {
@@ -82,10 +83,10 @@ public class InstaAdapter extends RecyclerView.Adapter <InstaAdapter.ViewHolder>
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-
         public ImageView ivImage;
         public TextView tvHandle;
         public TextView tvDescription;
+        public TextView time;
 
         public ViewHolder (@NonNull View itemView) {
             super(itemView);
@@ -93,6 +94,7 @@ public class InstaAdapter extends RecyclerView.Adapter <InstaAdapter.ViewHolder>
             ivImage = itemView.findViewById(R.id.ivPicture);
             tvDescription = itemView.findViewById(R.id.etDescription);
             tvHandle = itemView.findViewById(R.id.tvHandle);
+            time = itemView.findViewById(R.id.tvTime);
 
            tvHandle.setOnClickListener(new View.OnClickListener() {
                @Override
@@ -101,10 +103,8 @@ public class InstaAdapter extends RecyclerView.Adapter <InstaAdapter.ViewHolder>
                    context.startActivity(intent);
                }
            });
-
         }
     }
-
 }
 
 

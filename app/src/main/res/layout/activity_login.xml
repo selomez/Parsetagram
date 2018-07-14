@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity"
     android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#e7e7e7">
 
     <!-- Login progress -->
     <ProgressBar
@@ -32,13 +33,10 @@
         android:id="@+id/etName"
         android:layout_width="346dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="156dp"
-        android:background="@drawable/textborder"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="154dp"
+        android:background="#ffffff"
         android:hint="Username"
         android:paddingBottom="5dp" />
 
@@ -46,12 +44,12 @@
     <EditText
         android:id="@+id/etPassword"
         style="@drawable/editstyle"
-        android:layout_width="347dp"
+        android:layout_width="339dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="222dp"
-        android:background="@drawable/textborder"
+        android:layout_marginTop="220dp"
+        android:background="#ffffff"
         android:hint="Password"
         android:inputType="textPassword"
         android:paddingBottom="5dp" />
