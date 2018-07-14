@@ -32,7 +32,6 @@ public class CameraActivity extends AppCompatActivity {
 
     private EditText descriptionInput;
     private ImageView createButton;
-    private Button refreshButton;
     private Button postButton;
     private ProgressBar progessBar;
 
@@ -52,6 +51,7 @@ public class CameraActivity extends AppCompatActivity {
         createButton = findViewById(R.id.btnCreate);
         ImageView picView = findViewById(R.id.picView);
         postButton = findViewById(R.id.btnPost);
+        progessBar = findViewById(R.id.pbLoading);
 
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +97,8 @@ public class CameraActivity extends AppCompatActivity {
                }
             }
         });
-// shows the progress bar
+
+        // shows the progress bar
         Intent intent = new Intent(CameraActivity.this, TimelineActivity.class);
         intent.putExtra(Post.class.getSimpleName(), Parcels.wrap(newPost));
         progessBar.setVisibility(ProgressBar.INVISIBLE);
